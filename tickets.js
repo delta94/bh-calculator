@@ -1,6 +1,8 @@
 class Ticket extends Item {
-    constructor(name, imageURL, type) {
+    constructor(name, imageURL) {
         super(name, imageURL);
-        this.type = type;
     }
 }
+
+let ticket = new Ticket('ticket', '/images/ticket.png');
+let ticketPlus = new Ticket('ticket plus', '/images/ticket.png');
