@@ -967,6 +967,7 @@ input[type='button'].btn-border-block {
 .btn-border-outline-dark:hover > * {
     color: #fff;
     border-color: var(--inner-dialog-border-color-lighter);
+}
 
 .btn-border-outline-dark.disabled,
 .btn-border-outline-dark:disabled > * {

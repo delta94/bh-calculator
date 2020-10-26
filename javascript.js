@@ -42,7 +42,7 @@ function changeImproveTurnoverRate(newImproveTurnoverRate) {
  * @param supplie thông tin một recipe
  * @returns Chuỗi html
  */
-function createSupplyHtml(supplie) {
+function createSupplyHtml(supplie, index) {
     let supplyClassName = `recipe_${supplie.name}`.replace(/[^a-zA-Z0-9_]+/g, '');
     return `
 <div class="supply ${supplyClassName}">
@@ -96,7 +96,7 @@ function createExpandCounter(expandCounter) {
 <div class="supply expand_counter">
     <div class="supply-img"><img src="images/expand_counter.png" alt="recipe expand counter image"></div>
     <div class="supply-vertical-border"></div>
-    <div class="supply-number supply-quantity"><input type="text" value="${expandCounter ? expandCounter : ''}" placeholder="Num"></div>
+    <div class="supply-number supply-quantity"><input type="text" value="${expandCounter ? expandCounter : ''}" placeholder="%"></div>
 </div>     
 `.replace(/[\n]+|[ ]{2}/g, ' ');
 }
@@ -111,7 +111,7 @@ function createImproveTurnoverRate(improveTurnoverRate) {
 <div class="supply improve_turning_rate">
     <div class="supply-img"><img src="images/improve_turnover_rate.png" alt="recipe improve turnover rate image"></div>
     <div class="supply-vertical-border"></div>
-    <div class="supply-number supply-quantity"><input type="text" value="${improveTurnoverRate ? improveTurnoverRate : ''}" placeholder="Num"></div>
+    <div class="supply-number supply-quantity"><input type="text" value="${improveTurnoverRate ? improveTurnoverRate : ''}" placeholder="%"></div>
 </div>     
 `.replace(/[\n]+|[ ]{2}/g, ' ');
 }
@@ -120,34 +120,18 @@ function createImproveTurnoverRate(improveTurnoverRate) {
  * Hàm lặp qua từng phần tử của recipe và thêm chuỗi html vào danh sách nguồn hàng
  */
 function updateSupplyList() {
-    if ($('.supply-info .supply-list').length > 0) {
-        supplies.forEach((supplie) => {
-            let supplyClassName = `recipe_${supplie.name}`.replace(/[^a-zA-Z0-9_]+/g, '');
-            let supplyHtml = $('.supply-info .supply-list').find(`.${supplyClassName}`);
-            supplyHtml.find('input').val(supplie.quantity);
-        });
-    } else {
-        let supplyListHtml = ``;
-        supplies.forEach((supplie) => (supplyListHtml += createSupplyHtml(supplie)));
-        $('.supply-info .supply-list').html(supplyListHtml);
-    }
+    let supplyListHtml = ``;
+    supplies.forEach((supplie, index) => (supplyListHtml += createSupplyHtml(supplie, index)));
+    $('.supply-info .supply-list').html(supplyListHtml);
 }
 
 /**
  * Hàm lặp qua từng phần tử của recipe và thêm chuỗi html vào danh sách hàng có trong cửa hàng
  */
 function updateInStore() {
-    if ($('.supply-info .supply-list').length > 0) {
-        inStores.forEach((inStore) => {
-            let inStoreClassName = `recipe_${inStore.name}`.replace(/[^a-zA-Z0-9_]+/g, '');
-            let inStoreHtml = $('.supply-info .supply-list').find(`.${inStoreClassName}`);
-            inStoreHtml.find('input').val(inStore.quantity);
-        });
-    } else {
-        let inStoreListHtml = ``;
-        inStores.forEach((inStore) => (inStoreListHtml += creatInStoreHtml(inStore)));
-        $('.inStore-info .supply-list').html(inStoreListHtml);
-    }
+    let inStoreListHtml = ``;
+    inStores.forEach((inStore) => (inStoreListHtml += creatInStoreHtml(inStore)));
+    $('.inStore-info .supply-list').html(inStoreListHtml);
 }
 
 /**
@@ -157,7 +141,8 @@ function updateNumberTicket() {
     if ($('.upgrade-info .number_ticket').length > 0) {
         $('.upgrade-info .number_ticket').find('input').val(numberTicket);
     } else {
-        $('.upgrade-info').append(createNumberTicket(numberTicket));
+        $('.upgrade-info .supply-list').append(createNumberTicket(numberTicket));
+        $('.upgrade-info .supply-list .nothing-here').remove();
     }
 }
 
@@ -168,7 +153,8 @@ function updateExpandCounter() {
     if ($('.upgrade-info .expand_counter').length > 0) {
         $('.upgrade-info .expand_counter').find('input').val(expandCounter);
     } else {
-        $('.upgrade-info').append(createExpandCounter(expandCounter));
+        $('.upgrade-info .supply-list').append(createExpandCounter(expandCounter));
+        $('.upgrade-info .supply-list .nothing-here').remove();
     }
 }
 
@@ -179,7 +165,8 @@ function updateImproveTurnoverRate() {
     if ($('.upgrade-info .improve_turn_over_rate').length > 0) {
         $('.upgrade-info .improve_turn_over_rate').find('input').val(improveTurnoverRate);
     } else {
-        $('.upgrade-info').append(createImproveTurnoverRate(improveTurnoverRate));
+        $('.upgrade-info .supply-list').append(createImproveTurnoverRate(improveTurnoverRate));
+        $('.upgrade-info .supply-list .nothing-here').remove();
     }
 }
 
@@ -187,9 +174,9 @@ $(document).ready(function () {
     //Khởi tạo các sự kiện
     $('.event-holder').on('supplies-change', () => updateSupplyList());
     $('.event-holder').on('inStore-change', () => updateInStore());
-    $('.event-holder').on('numberTicket-change', () => updateInStore());
-    $('.event-holder').on('expandCounter-change', () => updateInStore());
-    $('.event-holder').on('improveTurnoverRate-change', () => updateInStore());
+    $('.event-holder').on('numberTicket-change', () => updateNumberTicket());
+    $('.event-holder').on('expandCounter-change', () => updateExpandCounter());
+    $('.event-holder').on('improveTurnoverRate-change', () => updateImproveTurnoverRate());
 
     //
 
@@ -197,4 +184,6 @@ $(document).ready(function () {
     $('.event-holder').trigger('supplies-change');
     $('.event-holder').trigger('inStore-change');
     $('.event-holder').trigger('numberTicket-change');
+    $('.event-holder').trigger('expandCounter-change');
+    $('.event-holder').trigger('improveTurnoverRate-change');
 });
