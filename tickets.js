@@ -4,5 +4,5 @@ class Ticket extends Item {
     }
 }
 
-let ticket = new Ticket('ticket', '/images/ticket.png');
-let ticketPlus = new Ticket('ticket plus', '/images/ticket.png');
+let ticket = new Ticket('ticket', 'images/ticket.png');
+let ticketPlus = new Ticket('ticket plus', 'images/ticket.png');
