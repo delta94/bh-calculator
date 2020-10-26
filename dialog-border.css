@@ -1,0 +1,32 @@
+.dialog {
+    background-color: var(--background-dialog-color);
+    color: var(--color);
+    border-color: var(--border-dialog-color);
+
+    padding: 10px;
+}
+
+.dialog-border {
+    background-color: var(--background-border-dialog-color);
+    padding: 5px;
+}
+
+.inner-dialog {
+    background-color: var(--background-inner-dialog-color);
+
+    padding: 1px;
+}
+.inner-dialog-border {
+    border: 2px dashed var(--inner-dialog-border-color);
+}
+
+.dialog-border,
+.inner-dialog {
+    border: 2px solid black;
+}
+
+.dialog,
+.dialog-border,
+.inner-dialog {
+    border-radius: 10px;
+}

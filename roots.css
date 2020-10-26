@@ -1,0 +1,15 @@
+:root {
+    --background-color: #1a1a1a;
+
+    --background-dialog-color: #423029;
+    --dialog-color: #48362c;
+
+    --background-inner-dialog-color: #decba5;
+    --inner-dialog-border-color: rgba(72, 54, 44, 0.25);
+    --inner-dialog-border-color-lighter: rgba(255, 255, 255, 0.25);
+
+    --background-border-dialog-color: #846152;
+
+    --supply-background-color: rgba(66, 48, 41, 0.25);
+    --supply-input-color: white;
+}
