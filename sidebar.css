@@ -1,0 +1,86 @@
+#sidebar.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 500px;
+    height: 100vh;
+
+    margin: 0;
+    padding: 0px;
+
+    background-color: transparent;
+
+    z-index: 512;
+    transition: all 0.5s;
+}
+
+#sidebar.sidebar.active {
+    margin-left: -500px;
+}
+
+#sidebar.sidebar > * {
+    width: 100%;
+    height: 100%;
+}
+
+#sidebar.sidebar > .dialog-border > .dialog {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.sidebar > .dialog-border > .dialog > .inner-dialog {
+    flex-grow: 1;
+}
+
+#sidebar.sidebar > .dialog-border > .dialog > .close-sidebar {
+    flex-grow: 0;
+}
+
+.open-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 50px;
+    z-index: 128;
+
+    transition: all 0.5s;
+}
+
+.open-sidebar > * {
+    justify-content: flex-end;
+}
+
+.open-sidebar:hover {
+    width: 150px;
+}
+
+.close-sidebar {
+    margin-top: 10px;
+}
+
+.open-sidebar {
+    border-radius: 10px;
+    display: none;
+}
+
+.open-sidebar.active {
+    display: inline-block;
+}
+
+.sidebar-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 256;
+    display: none;
+}
+.sidebar-cover.active {
+    display: block;
+}

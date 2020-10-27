@@ -11,45 +11,56 @@
 
     <!-- Css -->
     <link rel="stylesheet" href="roots.css">
+
     <link rel="stylesheet" href="btn-border.css">
     <link rel="stylesheet" href="dialog-border.css">
     <link rel="stylesheet" href="supply-list.css">
+
+    <link rel="stylesheet" href="sidebar.css">
+
     <link rel="stylesheet" href="stylesheets.css">
 
 </head>
 
 <body>
-    <!-- Nội dung chính -->
-    <div class="container">
-        <!-- Đọc ghi dữ liệu -->
-        <br>
+    <!-- Sidebar -->
+    <div class="sidebar active" id="sidebar">
         <div class="dialog-border">
             <div class="dialog">
-                <div class="inner-dialog p-3">
-                    <span class="btn-border btn-border-primary"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-secondary"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-success"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-danger"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-warning"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-info"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-light"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-dark"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-link"><span>Quick craft</span></span>
+                <div class="inner-dialog">
+                    <!-- Đọc ghi dữ liệu -->
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="btn-border btn-border-outline-success btn-border-bottomless btn-border-no-round-bottom nav-item nav-link active"
+                                id="nav-home-tab" data-toggle="tab" href="#nav-read" role="tab" aria-controls="nav-home"
+                                aria-selected="true"><span>Read</span></a>
+                            <a class="btn-border btn-border-outline-warning btn-border-bottomless btn-border-no-round-bottom nav-item nav-link"
+                                id="nav-profile-tab" data-toggle="tab" href="#nav-write" role="tab"
+                                aria-controls="nav-profile" aria-selected="false"><span>Write</span></a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-read" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <div class="w-100 text-center nothing-here">Không có gì ở đây</div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-write" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <div class="w-100 text-center nothing-here">Không có gì ở đây</div>
+                        </div>
+                    </div>
+                </div>
 
-                    <span class="btn-border btn-border-outline-primary"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-secondary"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-success"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-danger"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-warning"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-info"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-light"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-dark"><span>Quick craft</span></span>
-                    <span class="btn-border btn-border-outline-link"><span>Quick craft</span></span>
+                <div class="close-sidebar btn-border btn-border-warning w-100"><span>Đóng</span>
                 </div>
             </div>
         </div>
-        <br>
+    </div>
+    <div class="sidebar-cover"></div>
+    <div class="open-sidebar active btn-border btn-border-warning btn-border-leftless btn-border-no-round-left">
+        <span>☰</span></div>
 
+    <!-- Nội dung chính -->
+    <div class="content container" id="content">
         <!-- Thông tin nguồn nguyên liệu -->
         <br>
         <div class="supply-info dialog-border">
@@ -118,7 +129,12 @@
                         </div>
                         <div class="btn-border btn-border-warning"
                             style="height: 100px; border-radius: 20px; border: 5px solid black;">
-                            <span>Tính toán!</span></div>
+                            <span>Tính toán!</span>
+                        </div>
+                    </div>
+
+                    <div class="result">
+                        <div class="w-100 text-center nothing-here">Không có gì ở đây</div>
                     </div>
                 </div>
             </div>
@@ -142,6 +158,7 @@
     <script src="foods.js"></script>
 
     <!-- Javascript -->
+    <script src="sidebar.js"></script>
     <script src="javascript.js"></script>
 </body>
 
